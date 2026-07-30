@@ -216,8 +216,19 @@
               "icon": "lucide-info",
               "title": "File properties for Summary"
             }
+          },
+          {
+            "id": "1ee4220f5cc78803",
+            "type": "leaf",
+            "state": {
+              "type": "git-view",
+              "state": {},
+              "icon": "git-pull-request",
+              "title": "Source Control"
+            }
           }
-        ]
+        ],
+        "currentTab": 10
       }
     ],
     "direction": "horizontal",
@@ -235,11 +246,13 @@
       "command-palette:Open command palette": false,
       "bases:Create new base": false,
       "obsidian-full-calendar:Open Full Calendar": false,
+      "obsidian-git:Open Git source control": false,
       "copilot:Open Copilot Chat": false
     }
   },
   "active": "dd6cb0e409c75d9f",
   "lastOpenFiles": [
+    "copilot/copilot-conversations/Active_Note_Answers@20260730_121055.md",
     "Untitled Kanban.md",
     "Daily/2026-07-30 day 1.md",
     "Salesforce/2026-07-30 azazaz.md",
@@ -266,7 +279,6 @@
     "Data Analyst/Visualizations.md",
     "Data Analyst/Data Analyst.md",
     "Daily/Salesforce_Admin_Day08.md",
-    "Excalidraw/Drawing 2026-07-30 00.27.31.excalidraw.md",
     "Excalidraw/Scripts/Downloaded/Elbow connectors.svg",
     "copilot/copilot-conversations",
     "Tags",
