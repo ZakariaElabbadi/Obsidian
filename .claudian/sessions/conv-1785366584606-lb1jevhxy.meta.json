@@ -1,0 +1,12 @@
+{
+  "id": "conv-1785366584606-lb1jevhxy",
+  "providerId": "claude",
+  "title": "hi",
+  "titleGenerationStatus": "failed",
+  "createdAt": 1785366584606,
+  "updatedAt": 1785366824952,
+  "lastResponseAt": 1785366584715,
+  "sessionId": null,
+  "selectedModel": "haiku",
+  "currentNote": "Salesforce/01 - Platform/01.1 - Data Model/External ID.md"
+}

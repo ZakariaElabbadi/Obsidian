@@ -1,0 +1,291 @@
+{
+  "main": {
+    "id": "5324373015726ba8",
+    "type": "split",
+    "children": [
+      {
+        "id": "ae5558bfcf2c81db",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "466bb568d6134cf3",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "HubSpot/Summary.md",
+                "mode": "preview",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Summary"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "23942377488f078b",
+    "type": "split",
+    "children": [
+      {
+        "id": "699572d6cd01a810",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "5426a033926819c4",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Files"
+            }
+          },
+          {
+            "id": "8b94a1d950abeee4",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Search"
+            }
+          },
+          {
+            "id": "0d238c3e86ab1e86",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Bookmarks"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 348.5
+  },
+  "right": {
+    "id": "36f29cddca78a320",
+    "type": "split",
+    "children": [
+      {
+        "id": "7ac0bc6dadbcc8e4",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "dd6cb0e409c75d9f",
+            "type": "leaf",
+            "pinned": true,
+            "state": {
+              "type": "copilot-chat-view",
+              "state": {},
+              "pinned": true,
+              "icon": "message-square",
+              "title": "Copilot"
+            }
+          },
+          {
+            "id": "454026d491e09d43",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "Tags"
+            }
+          },
+          {
+            "id": "4fb97bf6b9144e83",
+            "type": "leaf",
+            "state": {
+              "type": "graph",
+              "state": {},
+              "icon": "lucide-git-fork",
+              "title": "Graph view"
+            }
+          },
+          {
+            "id": "b30e67fae0524c9b",
+            "type": "leaf",
+            "state": {
+              "type": "empty",
+              "state": {},
+              "icon": "lucide-file",
+              "title": "New tab"
+            }
+          },
+          {
+            "id": "06e9c629aafbd424",
+            "type": "leaf",
+            "state": {
+              "type": "all-properties",
+              "state": {
+                "sortOrder": "frequency",
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-archive",
+              "title": "All properties"
+            }
+          },
+          {
+            "id": "af2012e166078724",
+            "type": "leaf",
+            "state": {
+              "type": "graph",
+              "state": {},
+              "icon": "lucide-git-fork",
+              "title": "Graph view"
+            }
+          },
+          {
+            "id": "1cfff7e75e803b95",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "HubSpot/Summary.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Backlinks for Summary"
+            }
+          },
+          {
+            "id": "57d5efbf95b628d4",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Outgoing links"
+            }
+          },
+          {
+            "id": "204095f72d5f9efc",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Outline"
+            }
+          },
+          {
+            "id": "d4b65d31adcbbb88",
+            "type": "leaf",
+            "state": {
+              "type": "file-properties",
+              "state": {
+                "file": "HubSpot/Summary.md"
+              },
+              "icon": "lucide-info",
+              "title": "File properties for Summary"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 313.5
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "obsidian-kanban:Create new board": false,
+      "obsidian-excalidraw-plugin:New drawing": false,
+      "graph:Open graph view": false,
+      "switcher:Open quick switcher": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false,
+      "bases:Create new base": false,
+      "obsidian-full-calendar:Open Full Calendar": false,
+      "copilot:Open Copilot Chat": false
+    }
+  },
+  "active": "dd6cb0e409c75d9f",
+  "lastOpenFiles": [
+    "Untitled Kanban.md",
+    "Daily/2026-07-30 day 1.md",
+    "Salesforce/2026-07-30 azazaz.md",
+    "HubSpot/2026-07-30 zaz.md",
+    "HubSpot/(Every T,M,W) learn.md",
+    "Salesforce/2026-07-30 learn.md",
+    "HubSpot/Summary.md",
+    "HubSpot/Inbound Marketing.md",
+    "HubSpot/Inbound.md",
+    "HubSpot/HubSpot.md",
+    "copilot/copilot-custom-prompts/Clip Web Page.md",
+    "copilot/copilot-custom-prompts/Generate glossary.md",
+    "copilot/copilot-custom-prompts/Fix grammar and spelling.md",
+    "copilot/copilot-custom-prompts/Simplify.md",
+    "copilot/copilot-custom-prompts/Summarize.md",
+    "Untitled.base",
+    "copilot/copilot-conversations/API_Key_Not_Provided@20260730_000927.md",
+    "copilot/copilot-custom-prompts/Rewrite as tweet thread.md",
+    "copilot/copilot-custom-prompts/Make longer.md",
+    "copilot/copilot-custom-prompts/Explain like I am 5.md",
+    "copilot/copilot-custom-prompts/Emojify.md",
+    "copilot/copilot-custom-prompts/Remove URLs.md",
+    "Data Analyst/Technical Skills.md",
+    "Data Analyst/Visualizations.md",
+    "Data Analyst/Data Analyst.md",
+    "Daily/Salesforce_Admin_Day08.md",
+    "Excalidraw/Drawing 2026-07-30 00.27.31.excalidraw.md",
+    "Excalidraw/Scripts/Downloaded/Elbow connectors.svg",
+    "copilot/copilot-conversations",
+    "Tags",
+    "copilot/copilot-custom-prompts",
+    "copilot",
+    "Excalidraw/Scripts/Downloaded",
+    "Excalidraw/Scripts",
+    "DocsScannerBackups",
+    "Daily",
+    "Excalidraw",
+    "Untitled.canvas",
+    "98_Attachment/Pasted image 20260507115905.png",
+    "98_Attachment/fe572-database_structure.png",
+    "98_Attachment/Difference.png",
+    "98_Attachment/2026-04-27_14-27.png",
+    "98_Attachment/2026-06-13_10-43-37.png",
+    "Pasted image 20260613104451.png",
+    "98_Attachment/Pasted image 20260507115842.png",
+    "98_Attachment/imgcv.png",
+    "Untitled 1.canvas"
+  ]
+}
