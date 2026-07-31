@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "HubSpot/Help.md",
+                "file": "Salesforce Admin Bootcamp/Lesson 03.md",
                 "mode": "preview",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Help"
+              "title": "Lesson 03"
             }
           }
         ]
@@ -88,18 +88,6 @@
         "id": "7ac0bc6dadbcc8e4",
         "type": "tabs",
         "children": [
-          {
-            "id": "dd6cb0e409c75d9f",
-            "type": "leaf",
-            "pinned": true,
-            "state": {
-              "type": "copilot-chat-view",
-              "state": {},
-              "pinned": true,
-              "icon": "message-square",
-              "title": "Copilot"
-            }
-          },
           {
             "id": "454026d491e09d43",
             "type": "leaf",
@@ -211,27 +199,18 @@
             "state": {
               "type": "file-properties",
               "state": {
-                "file": "HubSpot/Summary.md"
+                "file": "Salesforce Admin Bootcamp/Lesson 03.md"
               },
               "icon": "lucide-info",
-              "title": "File properties for Summary"
-            }
-          },
-          {
-            "id": "1ee4220f5cc78803",
-            "type": "leaf",
-            "state": {
-              "type": "git-view",
-              "state": {},
-              "icon": "git-pull-request",
-              "title": "Source Control"
+              "title": "File properties for Lesson 03"
             }
           }
         ]
       }
     ],
     "direction": "horizontal",
-    "width": 313.5
+    "width": 313.5,
+    "collapsed": true
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -243,51 +222,48 @@
       "daily-notes:Open today's daily note": false,
       "templates:Insert template": false,
       "command-palette:Open command palette": false,
-      "bases:Create new base": false,
-      "obsidian-full-calendar:Open Full Calendar": false,
-      "obsidian-git:Open Git source control": false,
-      "copilot:Open Copilot Chat": false
+      "bases:Create new base": false
     }
   },
   "active": "466bb568d6134cf3",
   "lastOpenFiles": [
+    "Salesforce Admin Bootcamp/Lesson 02.md",
+    "Salesforce Admin Bootcamp/Lesson 01.md",
+    "Salesforce/04 - Automation/Flow Reference Guide new.md",
+    "Salesforce Admin Bootcamp/Lesson 03.md",
+    "Salesforce Admin Bootcamp/Unconfirmed 704934.crdownload",
+    "Salesforce Admin Bootcamp/Unconfirmed 225390.crdownload",
+    "Daily/Daily.md",
+    "Daily/Chapter 01.md",
+    "Daily/Salesforce_Summary.md",
+    "Daily/Salesforce_Admin_Day08.md",
+    "Data Analyst/Technical Skills.md",
+    "Data Analyst/Visualizations.md",
+    "Data Analyst/Data Analyst.md",
+    "Excalidraw/Drawing 2026-07-31 18.52.16.excalidraw.md",
+    "Salesforce Admin Bootcamp/Unconfirmed 771396.crdownload",
+    "Salesforce Admin Bootcamp",
+    "copilot/copilot-conversations/AI_Vision_Test@20260730_171555.md",
+    "Daily/2026-07-30 day 1.md",
+    "HubSpot/Help.md",
     "HubSpot/HubSpot.md",
     "HubSpot/Inbound.md",
     "HubSpot/Summary.md",
     "copilot/copilot-conversations/Active_Note_Answers@20260730_121055.md",
     "Untitled Kanban.md",
-    "Daily/2026-07-30 day 1.md",
     "Salesforce/2026-07-30 azazaz.md",
     "HubSpot/2026-07-30 zaz.md",
     "HubSpot/(Every T,M,W) learn.md",
     "Salesforce/2026-07-30 learn.md",
     "HubSpot/Inbound Marketing.md",
     "copilot/copilot-custom-prompts/Clip Web Page.md",
-    "copilot/copilot-custom-prompts/Generate glossary.md",
-    "copilot/copilot-custom-prompts/Fix grammar and spelling.md",
-    "copilot/copilot-custom-prompts/Simplify.md",
-    "copilot/copilot-custom-prompts/Summarize.md",
     "Untitled.base",
-    "copilot/copilot-conversations/API_Key_Not_Provided@20260730_000927.md",
-    "copilot/copilot-custom-prompts/Rewrite as tweet thread.md",
-    "copilot/copilot-custom-prompts/Make longer.md",
-    "copilot/copilot-custom-prompts/Explain like I am 5.md",
-    "copilot/copilot-custom-prompts/Emojify.md",
-    "copilot/copilot-custom-prompts/Remove URLs.md",
-    "Data Analyst/Technical Skills.md",
-    "Data Analyst/Visualizations.md",
-    "Data Analyst/Data Analyst.md",
-    "Daily/Salesforce_Admin_Day08.md",
     "Excalidraw/Scripts/Downloaded/Elbow connectors.svg",
     "copilot/copilot-conversations",
     "Tags",
     "copilot/copilot-custom-prompts",
     "copilot",
     "Excalidraw/Scripts/Downloaded",
-    "Excalidraw/Scripts",
-    "DocsScannerBackups",
-    "Daily",
-    "Excalidraw",
     "Untitled.canvas",
     "98_Attachment/Pasted image 20260507115905.png",
     "98_Attachment/fe572-database_structure.png",

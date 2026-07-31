@@ -5,5 +5,6 @@ sticker: lucide//air-vent
 - [[2026-07-30 day 1]]
 - [[Chapter 01]]
 - [[Salesforce_Admin_Day08]]
+- [[Salesforce_Summary]]
 
 %% End Waypoint %%
