@@ -4,21 +4,17 @@
     "type": "split",
     "children": [
       {
-        "id": "ae5558bfcf2c81db",
+        "id": "d27788f1955829dd",
         "type": "tabs",
         "children": [
           {
-            "id": "466bb568d6134cf3",
+            "id": "33d88cef50171ec1",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Salesforce Admin Bootcamp/Lesson 03.md",
-                "mode": "preview",
-                "source": false
-              },
+              "type": "empty",
+              "state": {},
               "icon": "lucide-file",
-              "title": "Lesson 03"
+              "title": "New tab"
             }
           }
         ]
@@ -41,7 +37,9 @@
               "type": "file-explorer",
               "state": {
                 "sortOrder": "alphabetical",
-                "autoReveal": false
+                "autoReveal": false,
+                "showSearch": false,
+                "searchQuery": ""
               },
               "icon": "lucide-folder-closed",
               "title": "Files"
@@ -204,8 +202,19 @@
               "icon": "lucide-info",
               "title": "File properties for Lesson 03"
             }
+          },
+          {
+            "id": "980d4a982b0a7370",
+            "type": "leaf",
+            "state": {
+              "type": "copilot-chat-view",
+              "state": {},
+              "icon": "message-square",
+              "title": "Copilot"
+            }
           }
-        ]
+        ],
+        "currentTab": 9
       }
     ],
     "direction": "horizontal",
@@ -214,7 +223,6 @@
   },
   "left-ribbon": {
     "hiddenItems": {
-      "obsidian-kanban:Create new board": false,
       "obsidian-excalidraw-plugin:New drawing": false,
       "graph:Open graph view": false,
       "switcher:Open quick switcher": false,
@@ -222,15 +230,21 @@
       "daily-notes:Open today's daily note": false,
       "templates:Insert template": false,
       "command-palette:Open command palette": false,
-      "bases:Create new base": false
+      "bases:Create new base": false,
+      "obsidian-git:Open Git source control": false,
+      "copilot:Open Copilot Chat": false,
+      "obsidian-kanban:Create new board": false
     }
   },
-  "active": "466bb568d6134cf3",
+  "active": "33d88cef50171ec1",
   "lastOpenFiles": [
+    "Untitled Kanban.md",
     "Salesforce Admin Bootcamp/Lesson 02.md",
-    "Salesforce Admin Bootcamp/Lesson 01.md",
-    "Salesforce/04 - Automation/Flow Reference Guide new.md",
     "Salesforce Admin Bootcamp/Lesson 03.md",
+    "Salesforce Admin Bootcamp/Lesson 01.md",
+    "copilot/copilot-custom-prompts/Make longer.md",
+    "copilot/copilot-conversations/Lesson_01_Note_Assistance@20260731_201648.md",
+    "Salesforce/04 - Automation/Flow Reference Guide new.md",
     "Salesforce Admin Bootcamp/Unconfirmed 704934.crdownload",
     "Salesforce Admin Bootcamp/Unconfirmed 225390.crdownload",
     "Daily/Daily.md",
@@ -250,13 +264,10 @@
     "HubSpot/Inbound.md",
     "HubSpot/Summary.md",
     "copilot/copilot-conversations/Active_Note_Answers@20260730_121055.md",
-    "Untitled Kanban.md",
     "Salesforce/2026-07-30 azazaz.md",
     "HubSpot/2026-07-30 zaz.md",
     "HubSpot/(Every T,M,W) learn.md",
     "Salesforce/2026-07-30 learn.md",
-    "HubSpot/Inbound Marketing.md",
-    "copilot/copilot-custom-prompts/Clip Web Page.md",
     "Untitled.base",
     "Excalidraw/Scripts/Downloaded/Elbow connectors.svg",
     "copilot/copilot-conversations",
