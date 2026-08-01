@@ -377,4 +377,4 @@ sitting in between with the SAME Up/Down rules as everything else.
 
 ---
 ### 🔗 Related Notes
-[[Object Relationship Traversal]] | [[Master Schema Map]] | [[Lookup Relationship]] | [[Master-Detail]] | [[Junction Object]] | [[Flow]]
+[[Object Relationship Traversal 1]] | [[Master Schema Map]] | [[Lookup Relationship]] | [[Master-Detail]] | [[Junction Object]] | [[Flow]]

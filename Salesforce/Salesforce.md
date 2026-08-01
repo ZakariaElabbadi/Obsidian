@@ -18,8 +18,11 @@
 		- [[Validation Rules]]
 	- **01.3 - Automation**
 		- [[Approval Process]]
+		- [[Flow Reference Guide new]]
 		- [[Flow]]
+		- [[Object Relationship Traversal 1]]
 		- [[Object Relationship Traversal]]
+		- [[Salesforce Admin Map v1.0 (Sales Cloud)]]
 		- [[Workflow Rules]]
 	- **01.4 - Security**
 		- [[Permission Sets]]
@@ -47,11 +50,11 @@
 	- [[Sales Cloud - Full Map]]
 	- [[Sales Cloud]]
 - **03 - Service Cloud**
-- **04 - Automation**
-	- [[Flow Reference Guide new]]
-	- [[Flows]]
-	- [[Object Relationship Traversal]]
-	- [[Salesforce Admin Map v1.0 (Sales Cloud)]]
+- **04 - Flows**
+	- [[Create Records]]
+	- [[Decision]]
+	- [[Task]]
+	- [[Update Records]]
 
 %% End Waypoint %%
 
