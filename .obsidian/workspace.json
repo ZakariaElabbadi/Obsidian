@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Salesforce/01 - Platform/01.3 - Automation/Flow Reference Guide new.md",
+                "file": "Salesforce/04 - Flows/Create Records.md",
                 "mode": "preview",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Flow Reference Guide new"
+              "title": "Create Records"
             }
           }
         ]
@@ -241,9 +241,12 @@
   },
   "active": "33d88cef50171ec1",
   "lastOpenFiles": [
-    "Salesforce/01 - Platform/01.3 - Automation/Approval Process.md",
-    "Salesforce/04 - Flows/Task.md",
+    "Salesforce/04 - Flows/Decision.md",
     "Salesforce/04 - Flows/Create Records.md",
+    "Salesforce/04 - Flows/Update Records.md",
+    "Salesforce/04 - Flows/Task.md",
+    "Salesforce/01 - Platform/01.3 - Automation/Flow Reference Guide new.md",
+    "Salesforce/01 - Platform/01.3 - Automation/Approval Process.md",
     "Tableau/data analyst.md",
     "Tableau/Definition.md",
     "Tableau/Data.md",
@@ -252,15 +255,12 @@
     "copilot/copilot-conversations/Greeting@20260802_113544.md",
     "copilot/copilot-conversations/Initial_Greeting@20260802_113239.md",
     "Salesforce/04 - Flows/Task 1.md",
-    "Salesforce/04 - Flows/Update Records.md",
     "Unconfirmed 59978.crdownload",
     "Unconfirmed 809655.crdownload",
-    "Salesforce/04 - Flows/Decision.md",
     "Unconfirmed 490155.crdownload",
     "Salesforce/04 - Flows/Flows.md",
     "Unconfirmed 945517.crdownload",
     "Unconfirmed 11757.crdownload",
-    "Salesforce/01 - Platform/01.3 - Automation/Flow Reference Guide new.md",
     "Salesforce/01 - Platform/01.3 - Automation/Object Relationship Traversal 1.md",
     "Salesforce/Salesforce.md",
     "Salesforce Admin Bootcamp/Lesson 04.md",
