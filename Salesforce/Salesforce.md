@@ -53,6 +53,7 @@
 - **04 - Flows**
 	- [[Create Records]]
 	- [[Decision]]
+	- [[Get Records]]
 	- [[Task]]
 	- [[Update Records]]
 
