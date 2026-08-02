@@ -1,5 +1,5 @@
 {
-  "userId": "ad4ac73a-f980-4336-a83e-73171e56548d",
+  "userId": "a9e38b4e-4978-4d49-af03-61675f56c72e",
   "isPlusUser": false,
   "plusLicenseKey": "",
   "openAIApiKey": "",
@@ -24,7 +24,7 @@
   "githubCopilotToken": "",
   "githubCopilotTokenExpiresAt": 0,
   "defaultChainType": "llm_chain",
-  "defaultModelKey": "gemini-2.5-flash|google",
+  "defaultModelKey": "google/gemini-2.5-flash|openrouterai",
   "embeddingModelKey": "openai/text-embedding-3-small|openrouterai",
   "temperature": 0.1,
   "maxTokens": 6000,
@@ -106,8 +106,8 @@
       "isBuiltIn": true,
       "projectEnabled": true,
       "capabilities": [
-        "reasoning",
-        "vision"
+        "vision",
+        "reasoning"
       ],
       "apiKey": ""
     },
@@ -117,8 +117,8 @@
       "enabled": true,
       "isBuiltIn": true,
       "capabilities": [
-        "reasoning",
-        "vision"
+        "vision",
+        "reasoning"
       ],
       "apiKey": ""
     },
@@ -154,25 +154,23 @@
       "capabilities": [
         "vision"
       ],
-      "apiKey": "",
-      "maxTokens": 17700,
-      "temperature": 0.33
+      "apiKey": ""
     },
     {
       "name": "google/gemini-3.1-pro-preview",
       "provider": "openrouterai",
-      "enabled": false,
+      "enabled": true,
       "isBuiltIn": true,
       "capabilities": [
-        "reasoning",
-        "vision"
+        "vision",
+        "reasoning"
       ],
       "apiKey": ""
     },
     {
       "name": "google/gemini-2.5-pro",
       "provider": "openrouterai",
-      "enabled": false,
+      "enabled": true,
       "isBuiltIn": true,
       "core": false,
       "projectEnabled": true,
@@ -184,7 +182,7 @@
     {
       "name": "openai/gpt-5.5",
       "provider": "openrouterai",
-      "enabled": false,
+      "enabled": true,
       "isBuiltIn": true,
       "core": false,
       "projectEnabled": true,
@@ -196,7 +194,7 @@
     {
       "name": "openai/gpt-5.4-mini",
       "provider": "openrouterai",
-      "enabled": false,
+      "enabled": true,
       "isBuiltIn": true,
       "core": false,
       "projectEnabled": true,
@@ -208,7 +206,7 @@
     {
       "name": "grok-4.3",
       "provider": "xai",
-      "enabled": false,
+      "enabled": true,
       "isBuiltIn": true,
       "core": false,
       "projectEnabled": true,
@@ -220,7 +218,7 @@
     {
       "name": "x-ai/grok-4.3",
       "provider": "openrouterai",
-      "enabled": false,
+      "enabled": true,
       "isBuiltIn": true,
       "core": false,
       "projectEnabled": true,
@@ -232,7 +230,7 @@
     {
       "name": "gpt-4.1",
       "provider": "openai",
-      "enabled": false,
+      "enabled": true,
       "isBuiltIn": true,
       "core": false,
       "projectEnabled": true,
@@ -244,7 +242,7 @@
     {
       "name": "gpt-4.1-mini",
       "provider": "openai",
-      "enabled": false,
+      "enabled": true,
       "isBuiltIn": true,
       "core": false,
       "projectEnabled": true,
@@ -256,40 +254,40 @@
     {
       "name": "claude-opus-4-7",
       "provider": "anthropic",
-      "enabled": false,
+      "enabled": true,
       "isBuiltIn": true,
       "capabilities": [
-        "reasoning",
-        "vision"
+        "vision",
+        "reasoning"
       ],
       "apiKey": ""
     },
     {
       "name": "claude-haiku-4-5",
       "provider": "anthropic",
-      "enabled": false,
+      "enabled": true,
       "isBuiltIn": true,
       "capabilities": [
-        "reasoning",
-        "vision"
+        "vision",
+        "reasoning"
       ],
       "apiKey": ""
     },
     {
       "name": "gemini-3.1-pro-preview",
       "provider": "google",
-      "enabled": false,
+      "enabled": true,
       "isBuiltIn": true,
       "capabilities": [
-        "reasoning",
-        "vision"
+        "vision",
+        "reasoning"
       ],
       "apiKey": ""
     },
     {
       "name": "gemini-2.5-pro",
       "provider": "google",
-      "enabled": false,
+      "enabled": true,
       "isBuiltIn": true,
       "projectEnabled": true,
       "capabilities": [
@@ -300,14 +298,14 @@
     {
       "name": "deepseek-chat",
       "provider": "deepseek",
-      "enabled": false,
+      "enabled": true,
       "isBuiltIn": true,
       "apiKey": ""
     },
     {
       "name": "deepseek-reasoner",
       "provider": "deepseek",
-      "enabled": false,
+      "enabled": true,
       "isBuiltIn": true,
       "capabilities": [
         "reasoning"
@@ -317,7 +315,7 @@
     {
       "name": "deepseek-ai/DeepSeek-V3",
       "provider": "siliconflow",
-      "enabled": false,
+      "enabled": true,
       "isBuiltIn": false,
       "baseUrl": "https://api.siliconflow.com/v1",
       "apiKey": ""
@@ -325,12 +323,18 @@
     {
       "name": "deepseek-ai/DeepSeek-R1",
       "provider": "siliconflow",
-      "enabled": false,
+      "enabled": true,
       "isBuiltIn": false,
       "baseUrl": "https://api.siliconflow.com/v1",
       "capabilities": [
         "reasoning"
       ],
+      "apiKey": ""
+    },
+    {
+      "name": "gemini-2.0-flash",
+      "provider": "google",
+      "enabled": true,
       "apiKey": ""
     },
     {
@@ -472,7 +476,7 @@
   "passMarkdownImages": true,
   "enableAutonomousAgent": true,
   "enableCustomPromptTemplating": true,
-  "enableSemanticSearchV3": true,
+  "enableSemanticSearchV3": false,
   "enableSelfHostMode": false,
   "enableMiyo": false,
   "miyoSearchAll": false,
@@ -486,7 +490,7 @@
   "perplexityApiKey": "",
   "supadataApiKey": "",
   "enableLexicalBoosts": true,
-  "suggestedDefaultCommands": true,
+  "suggestedDefaultCommands": false,
   "autonomousAgentMaxIterations": 4,
   "autonomousAgentEnabledToolIds": [
     "localSearch",

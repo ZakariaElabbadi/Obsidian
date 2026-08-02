@@ -91,6 +91,16 @@
         "type": "tabs",
         "children": [
           {
+            "id": "36455b26ea4f429b",
+            "type": "leaf",
+            "state": {
+              "type": "copilot-chat-view",
+              "state": {},
+              "icon": "message-square",
+              "title": "Copilot"
+            }
+          },
+          {
             "id": "454026d491e09d43",
             "type": "leaf",
             "state": {
@@ -201,29 +211,17 @@
             "state": {
               "type": "file-properties",
               "state": {
-                "file": "Salesforce Admin Bootcamp/Lesson 03.md"
+                "file": "Salesforce/04 - Flows/Task.md"
               },
               "icon": "lucide-info",
-              "title": "File properties for Lesson 03"
-            }
-          },
-          {
-            "id": "980d4a982b0a7370",
-            "type": "leaf",
-            "state": {
-              "type": "copilot-chat-view",
-              "state": {},
-              "icon": "message-square",
-              "title": "Copilot"
+              "title": "File properties"
             }
           }
-        ],
-        "currentTab": 9
+        ]
       }
     ],
     "direction": "horizontal",
-    "width": 313.5,
-    "collapsed": true
+    "width": 313.5
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -240,12 +238,15 @@
       "obsidian-kanban:Create new board": false
     }
   },
-  "active": "33d88cef50171ec1",
+  "active": "5426a033926819c4",
   "lastOpenFiles": [
+    "Untitled 1.md",
+    "Untitled.md",
     "Salesforce/04 - Flows/Task.md",
+    "copilot/copilot-conversations/Greeting@20260802_113544.md",
+    "copilot/copilot-conversations/Initial_Greeting@20260802_113239.md",
     "Salesforce/04 - Flows/Task 1.md",
     "Salesforce/04 - Flows/Update Records.md",
-    "Salesforce/04 - Flows/Task.md",
     "Unconfirmed 59978.crdownload",
     "Unconfirmed 809655.crdownload",
     "Salesforce/04 - Flows/Decision.md",
@@ -277,9 +278,6 @@
     "Daily/Salesforce_Summary.md",
     "Daily/Salesforce_Admin_Day08.md",
     "Data Analyst/Technical Skills.md",
-    "Data Analyst/Visualizations.md",
-    "Data Analyst/Data Analyst.md",
-    "Excalidraw/Drawing 2026-07-31 18.52.16.excalidraw.md",
     "Salesforce Admin Bootcamp/Unconfirmed 771396.crdownload",
     "Excalidraw/Scripts/Downloaded/Elbow connectors.svg",
     "Untitled.canvas",
