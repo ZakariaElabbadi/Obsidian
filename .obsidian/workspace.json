@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Tableau/data analyst.md",
+                "file": "Salesforce/01 - Platform/01.3 - Automation/Flow Reference Guide new.md",
                 "mode": "preview",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "data analyst"
+              "title": "Flow Reference Guide new"
             }
           }
         ]
@@ -241,10 +241,12 @@
   },
   "active": "33d88cef50171ec1",
   "lastOpenFiles": [
-    "Tableau/Definition.md",
-    "Tableau/data analyst.md",
-    "Tableau/Data.md",
+    "Salesforce/01 - Platform/01.3 - Automation/Approval Process.md",
     "Salesforce/04 - Flows/Task.md",
+    "Salesforce/04 - Flows/Create Records.md",
+    "Tableau/data analyst.md",
+    "Tableau/Definition.md",
+    "Tableau/Data.md",
     "Untitled 1.md",
     "Untitled.md",
     "copilot/copilot-conversations/Greeting@20260802_113544.md",
@@ -255,7 +257,6 @@
     "Unconfirmed 809655.crdownload",
     "Salesforce/04 - Flows/Decision.md",
     "Unconfirmed 490155.crdownload",
-    "Salesforce/04 - Flows/Create Records.md",
     "Salesforce/04 - Flows/Flows.md",
     "Unconfirmed 945517.crdownload",
     "Unconfirmed 11757.crdownload",
@@ -278,7 +279,6 @@
     "Salesforce Admin Bootcamp/Unconfirmed 704934.crdownload",
     "Salesforce Admin Bootcamp/Unconfirmed 225390.crdownload",
     "Daily/Daily.md",
-    "Daily/Chapter 01.md",
     "Salesforce Admin Bootcamp/Unconfirmed 771396.crdownload",
     "Excalidraw/Scripts/Downloaded/Elbow connectors.svg",
     "Untitled.canvas",
