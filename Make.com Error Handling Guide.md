@@ -1,311 +1,222 @@
+---
+tags: [make.com, automation, error-handling, integromat]
+title: Make.com Error Handling Guide
+source: https://help.make.com/error-handling
+---
+
 # Make.com Error Handling Guide
 
-## Overview
+> Verified against the official docs (help.make.com/error-handling) — corrections and additions from the source are marked ✅.
 
-Make.com (formerly Integromat) provides robust error handling mechanisms to manage failures in automation scenarios. Understanding these mechanisms is crucial for building reliable workflows.
-
----
-
-## Types of Errors in Make.com
-
-### 1. **Connection Errors** (Transient)
-- API authentication failures
-- Network timeouts
-- Service unavailable
-- Invalid credentials
-
-### 2. **Data Errors** (Structural)
-- Invalid data format
-- Missing required fields
-- Data type mismatches
-- Validation failures
-
-### 3. **Logic Errors** (Structural)
-- Infinite loops
-- Incorrect mappings
-- Conditional logic failures
-- Router misconfiguration
-
-### 4. **Rate Limiting Errors** (Transient)
-- API quota exceeded
-- Too many requests
-- Concurrent execution limits
-
-### 5. **Module-Specific Errors**
-- Each app/module has unique error codes
-- Example: Google Sheets "Row not found", Slack "Channel not found"
-
-> **Key Distinction**: **Transient errors** (connection, rate limits) recover on their own — retry works. **Structural errors** (bad mappings, expired tokens, malformed data) require code/config fix — retry just delays failure.
+## 📑 Table of Contents
+1. [[#1. Core Concept — What Is an Error Handler]]
+2. [[#2. Types of Errors]]
+3. [[#3. The 5 Error Handler Directives]]
+4. [[#4. How the Error Handling Route Works]]
+5. [[#5. Retry Mechanisms — Two Different Things]]
+6. [[#6. Incomplete Executions Queue]]
+7. [[#7. Scenario-Level Settings]]
+8. [[#8. Alerting Strategy]]
+9. [[#9. Advanced Patterns]]
+10. [[#10. Common Pitfalls]]
+11. [[#11. Error Code Reference]]
+12. [[#12. Best Practices Checklist]]
+13. [[#13. Resources]]
 
 ---
 
-## The 5 Error Handler Directives (Core Concept)
+## 1. Core Concept — What Is an Error Handler
 
-When you add an error handler route to a module, it **must end in exactly one of five directives**. Each fundamentally changes scenario state:
+An **error handler** is a module attached to the end of an error-handling route. When the module it's attached to fails, the error handler **intercepts the failure** and tells the scenario what to do next — instead of the scenario just stopping.
 
-| Directive | Stops Run? | Continues Other Bundles? | Keeps Prior Changes? | Use Case |
-|-----------|------------|--------------------------|---------------------|----------|
-| **Skip** | No | Yes | N/A | Optional enrichment (lookup that's nice-to-have) |
-| **Resume** | No | Yes | N/A | Safe fallback value (continue with default) |
-| **Retry** | No (rest continues) | Yes | N/A | Isolated record-level failures |
-| **Commit** | Yes | No | **Yes** | Partial progress worth keeping |
-| **Rollback** | Yes | No | **Yes*** | Transactional consistency (DB/Data Store only) |
+**Without any error handler:** the scenario stops, and (if enabled) the failed run is pushed to the **Incomplete Executions** tab for you to fix manually.
 
-> *Rollback only reverts modules supporting transactions (database, data store). Cannot undo sent emails, deleted files, or API calls already made.
+**With an error handler:** the scenario follows whatever logic you defined — retry, skip, substitute a value, or cleanly stop — automatically, without you touching it.
 
-### Directive Behavior Details
-
-**Skip** — Treats module as producing no output. Downstream modules map against empty values. **Danger**: Silent data loss if downstream expects the output.
-
-**Resume** — Supplies fallback value, continues as if module succeeded. **Danger**: Scenario runs on placeholder data unnoticed for weeks.
-
-**Retry** — Parks failing bundle, retries on your schedule (attempts × interval), other bundles process normally. **Not for structural errors**.
-
-**Commit** — Stops scenario, marks run successful, keeps all prior transactional changes. Use when "first 3 steps succeeded, keep them even if step 4 fails."
-
-**Rollback** — Stops scenario, reverts transactional changes in *this execution only*. Default behavior when **no error handler attached**. Use for multi-step writes that must stay consistent.
+> ✅ Official example: a form-to-CRM sync fails because a required "phone number" field is blank. Without a handler, the run stops and sits in Incomplete Executions until you manually type in a placeholder. With a **Resume** handler configured to substitute a default phone number, the scenario finishes on its own every time this happens.
 
 ---
 
-## Error Handling Mechanisms
+## 2. Types of Errors
 
-### 1. **Error Handler Route (Built-in)**
+| Category | Examples | Recovers on retry? |
+|---|---|---|
+| **Connection (transient)** | Auth failures, timeouts, service unavailable | ✅ Yes |
+| **Rate limiting (transient)** | Quota exceeded, too many requests, concurrency limits | ✅ Yes |
+| **Data (structural)** | Invalid format, missing required field, type mismatch, validation failure | ❌ No |
+| **Logic (structural)** | Infinite loops, bad mappings, router misconfiguration | ❌ No |
+| **Module-specific** | e.g. Google Sheets "Row not found", Slack "Channel not found" | Depends |
+
+> 🔑 **Key distinction:** Transient errors resolve themselves — retrying genuinely helps. Structural errors need a code/config fix — retrying just delays the inevitable and burns operations/quota.
+
+---
+
+## 3. The 5 Error Handler Directives
+
+Every error-handling route must end in exactly one of these five. This is **not a HubSpot-style "pick a few options"** — Make defines precisely five, each with a fixed effect on scenario state ✅:
+
+| Directive | Stops scenario? | Other bundles continue? | Final scenario status ✅ | Use case |
+|---|---|---|---|---|
+| **Skip** | No | Yes | **Success** | Occasional bad data that doesn't matter (nice-to-have lookup) |
+| **Resume** | No | Yes | **Success** | Safe fallback value so the scenario can keep going |
+| **Retry** | No (rest continues) | Yes | **Warning** | Isolated, record-level failures worth automatically retrying |
+| **Commit** | Yes | No | **Warning** | Keep partial progress ("first 3 steps worked, keep them") |
+| **Rollback** | Yes | No | **Error** | Undo transactional changes for consistency (default with no handler) |
+
+### What each one actually does
+
+- **Skip** — The failing module is treated as if it produced *no output*; the bundle is removed and the scenario moves to the next one. ⚠️ Danger: if a downstream module expects that output, you get silent data loss.
+- **Resume** — Substitutes a predefined fallback value for the failed module's output and continues as if nothing happened. ⚠️ Danger: your data can quietly fill up with placeholder values for weeks before anyone notices.
+- **Retry** — Removes the failing bundle from the flow, stores it as an **incomplete execution**, and retries it on your configured schedule while the rest of the bundles process normally. **Never use this for structural errors** — it just delays the failure and burns operations.
+- **Commit** — Stops the run but **commits/keeps** all transactional changes made so far. Only meaningfully different from Rollback if you're using transactional (ACID-tagged) apps like Data Store or MySQL — otherwise it just stops the scenario.
+- **Rollback** — Stops the run and **reverts** any changes in transaction-supporting modules only. This is the **default behavior** when no error handler is attached (and Incomplete Executions is off).
+
+> ⚠️ Rollback **cannot** undo non-transactional actions — sent emails/Slack messages, deleted files, or already-fired HTTP/API calls (POST, DELETE, etc.). If your scenario is `CRM write → Sheet write → Slack notify` and the CRM step fails, Rollback won't "unsend" a Slack message that already went out. **Order your modules so non-transactional steps run last.**
+
+---
+
+## 4. How the Error Handling Route Works
+
 ```
-Module → [Error] → Error Handler Module → [Directive]
+Module → [Error] → (transparent dotted connection) → Error-handling route → Directive
 ```
-- Right-click any module → "Add error handler"
-- Creates alternative execution path on failure
-- **Must end in one of 5 directives above**
 
-### 2. **Two Retry Mechanisms (Different!)**
-
-| Mechanism | Trigger | Schedule | Config |
-|-----------|---------|----------|--------|
-| **Automatic (Make)** | Connection errors, rate limits, timeouts | Exponential backoff: ~1m, 10m, 10m, 30m... up to 8 attempts | **Requires** "Store incomplete executions" ON in scenario settings |
-| **Handler (Retry directive)** | Any error you configure | Your custom attempts × interval | Per-module, independent of scenario setting |
-
-> **Critical**: Automatic retries only fire for transient errors. Structural errors (400, 401, mapping failures) never auto-retry.
-
-### 3. **Ignore Errors** (Module Setting)
-- Toggle "Ignore errors" on module
-- Continues execution despite failure
-- **No directive**, no error handler route created
-- Use with extreme caution — hides issues completely
-
-### 4. **Break / No Handler** (Default = Rollback)
-- No error handler attached → **Rollback behavior**
-- Stops scenario, reverts transactional changes
-- Marks run as failed
+- Add one by right-clicking any module → **"Add error handler."**
+- The route is visually a **transparent, dotted line** from the module.
+- **Doesn't have to contain an error-handler module at all** — it can be just a Slack/Email notification, with no directive module attached.
+- **Doesn't consume operations** — running the error route is free.
+- **If nothing in the error route itself errors** → Make treats it as skipped, and the run is marked **successful**.
+- **If a module inside the error route also errors** → the run ends with an **error** status (this is how "nested" error handling behaves).
 
 ---
 
-## Incomplete Executions Queue
+## 5. Retry Mechanisms — Two Different Things
 
-When a **Retry directive fires** or **module fails with no handler**, Make can store the run — exact data + state at failure point — as an **incomplete execution** for later manual/auto resume.
+Make has two mechanisms people often conflate:
+
+| Mechanism | Triggered by | Schedule | Requires |
+|---|---|---|---|
+| **Automatic retry (built into Make)** | Connection errors, rate limits, timeouts | Exponential backoff: ~1m, 10m, 10m, 30m… up to 8 attempts | **Store incomplete executions** = ON |
+| **Retry directive (your handler)** | Any error you route into it | Your custom attempts × interval | Configured per-module, independent of the scenario setting |
+
+> ⚠️ Automatic retries **only** fire for transient errors. Structural errors (HTTP 400, 401, mapping failures) never auto-retry — they just fail and (if enabled) land in Incomplete Executions.
+
+---
+
+## 6. Incomplete Executions Queue
+
+When a **Retry directive fires**, or a module fails with **no handler attached**, Make can store the run's exact data + failure state as an **incomplete execution** for later manual or automatic resume.
 
 ### Requirements
-- **"Store incomplete executions" MUST be ON** in Scenario Settings (OFF by default)
-- First-module failures only stored if **Retry handler attached directly to that module**
+- **"Store incomplete executions" must be ON** in Scenario Settings (**OFF by default**).
+- A failure on the **first module** of a scenario is only captured if that first module has a **Retry handler directly attached to it** ✅ — otherwise it's lost with no queue entry.
 
-### Operational Reality
-- Queue of 5 = 5-min fix
-- Queue of 200 discovered 3 weeks late = reconciliation nightmare (data changed elsewhere, manual edits conflict)
-- **Fix**: Check queue on schedule short enough it never grows large
+### Router behavior (official)
+When Incomplete Executions is ON and a bundle errors inside one branch of a **Router**:
+- The scenario **does not stop** — the error is treated as a warning.
+- The bundle stops **only within that failing route**.
+- The **same bundle still completes normally through every other matching route.**
+- The failed portion is stored in the Incomplete Executions tab.
+
+→ A single bundle can partially succeed: finishing in some branches while being captured as "incomplete" in just the one that failed.
+
+### Operational reality
+- A queue of 5 = a five-minute fix.
+- A queue of 200 discovered three weeks later = a reconciliation nightmare (source data has since changed, manual edits conflict).
+- **Fix:** review the queue on a schedule shorter than the rate at which failures accumulate.
 
 ### Limits
-- Resolved executions auto-deleted after **30 days**
-- Org-wide storage cap (usage-based) — new incomplete executions blocked when hit
+- Resolved executions auto-delete after **30 days**.
+- There's an org-wide storage cap (usage-based) — once hit, new incomplete executions are blocked (see **Enable data loss** setting below).
 
 ---
 
-## Alerting That Actually Gets Checked
+## 7. Scenario-Level Settings
 
-**Golden Rule**: Alert on the **directive**, not on the error.
+Found under **Scenario Settings → (Advanced)**:
 
-| Module Directive | Alert? | Why |
-|------------------|--------|-----|
-| Skip / Resume (with safe fallback) | **No** | System working as designed |
-| Retry (transient) | **No** | Auto-resolves |
-| **Commit / Rollback / Break** | **YES** | System couldn't decide safely |
-| **Incomplete execution created** | **YES** | Human intervention needed |
-
-### Implementation
-- Route Break/Commit/Rollback → Slack/Email/Webhook
-- Time-critical (payments, contracts) → Webhook → **existing paging/ticketing system** (PagerDuty, Opsgenie)
-- Avoid: "Notify on every error" → alert fatigue → ignored within a week
+| Setting | Default | Effect |
+|---|---|---|
+| **Store incomplete executions** | OFF | Required for auto-retries and the Incomplete Executions queue to work at all |
+| **Sequential processing** | OFF | Postpones the next run until the previous one finishes *and* all incomplete executions are resolved. Critical for webhook-triggered scenarios, which otherwise run in parallel and can finish out of order |
+| **Enable data loss** | — | When incomplete-execution storage is full: **ON** = discard the data and keep running on schedule; **OFF** = disable scheduling instead |
+| **Number of consecutive errors** | 3 | Auto-disables the scenario after this many failed runs in a row. **Exception:** instant (webhook) triggers disable *immediately* on error, and also immediately on `AccountValidationError`, `OperationsLimitExceededError`, or `DataSizeLimitExceededError` regardless of the counter |
+| **Auto commit** | OFF (commit at end) | ON = commit transactional (ACID-tagged) module changes right after each one happens, rather than only after the whole run succeeds |
+| **Commit trigger last** | OFF (commit in order) | ON = commit the *first* module's transactional changes *last* instead of in execution order |
+| **A run that ends with a Warning** | — | Scheduling continues normally — only an **Error** status affects the consecutive-error counter |
 
 ---
 
-## Error Handler Modules
+## 8. Alerting Strategy
 
-### **Router (Error Handling)**
-```
-Error → Router → Route 1: Notify Admin
-              → Route 2: Log to Database
-              → Route 3: Retry with Modified Data
-              → Route 4: Create Ticket
-```
+**Golden rule: alert on the *directive*, not on every error.**
 
-### **Set Variable**
-Store error details for later use:
-- `{{error.message}}`
-- `{{error.type}}`
-- `{{error.module}}`
+| Directive / event | Alert? | Why |
+|---|---|---|
+| Skip / Resume (safe fallback) | ❌ No | System is working exactly as designed |
+| Retry (transient) | ❌ No | Auto-resolves |
+| **Commit / Rollback / Break** | ✅ Yes | The system couldn't safely decide on its own |
+| **Incomplete execution created** | ✅ Yes | Needs a human |
 
-### **HTTP / Webhook**
-Send error to external monitoring:
-- Slack, Discord, Email
-- PagerDuty, Opsgenie
-- Custom logging endpoint
-
-### **Sleep + Resume**
-Implement custom retry logic:
-```
-Error → Sleep (300s) → Resume from Failed Module
-```
+**Implementation tips:**
+- Route Commit/Rollback failures → Slack/Email/Webhook.
+- Time-critical processes (payments, contracts) → webhook into your **existing** paging system (PagerDuty, Opsgenie) — don't build a parallel alerting channel.
+- Avoid "notify on every single error" — this leads to alert fatigue and the channel gets muted within a week.
 
 ---
 
-## Critical: Transient vs Structural Errors
+## 9. Advanced Patterns
 
-| Error Type | Examples | Retry Works? | Correct Handling |
-|------------|----------|--------------|------------------|
-| **Transient** | Timeout, 429 rate limit, 503, network blip | **Yes** | Retry directive / Auto-retry |
-| **Structural** | 400 bad request, 401 expired token, mapping error, malformed JSON, missing field | **No** | Fix code/config, alert human |
-
-> **Anti-pattern**: High retry counts on structural errors = burns ops quota, delays detection, adds log noise. Reserve aggressive retries for flaky external APIs only.
-
----
-
-## Rollback Limitations (Important)
-
-Rollback **only** reverts:
-- Database modules (MySQL, PostgreSQL, SQL Server, etc.)
-- Data Store modules
-- Other transaction-supporting modules
-
-Rollback **CANNOT** undo:
-- Sent emails / Slack messages / SMS
-- Deleted files
-- HTTP API calls already executed (POST, DELETE, etc.)
-- Any non-transactional module action
-
-> If your scenario: CRM write → Spreadsheet write → Slack notify, and CRM fails — Rollback won't "unsend" the Slack if it already fired. Order modules so non-transactional steps come LAST, or use Commit + manual cleanup.
-
----
-
-## Advanced Patterns
-
-### **Circuit Breaker Pattern**
+### Circuit Breaker
 ```
-Counter Module → Increment on Error
-                → If > 5 errors in 10min → Pause Scenario
-                → Alert Team
+Counter module → increments on each error
+  → if > 5 errors in 10 min → pause scenario → alert team
 ```
 
-### **Dead Letter Queue**
+### Dead Letter Queue
 ```
-Failed Data → Store in Data Store / Google Sheets
-              → Manual Review Process
-              → Replay Button (HTTP trigger)
+Failed bundle → store in Data Store / Sheet
+  → manual review process
+  → "Replay" button (HTTP trigger re-injects it)
 ```
 
-### **Graceful Degradation**
+### Graceful Degradation
 ```
-Primary API → [Error] → Fallback API
-                       → Cache/Static Data
-                       → Default Values
+Primary API → [Error] → Fallback API → Cached/static data → Hardcoded default
+```
+
+### Router-based error triage (route by error code)
+```
+[HTTP: Get User]
+   ├── Success → [Process User]
+   └── Error → [Router: branch on {{error.code}}]
+                  ├── 401 → refresh token → Resume
+                  ├── 429 → sleep 60s → Resume
+                  ├── 404 → create user → Resume
+                  └── other → alert team → log bundle → Rollback
 ```
 
 ---
 
-## Error Data Structure
-
-When error handler triggers, these variables available:
-
-| Variable | Description |
-|----------|-------------|
-| `{{error.message}}` | Human-readable error message |
-| `{{error.type}}` | Error category (e.g., `DataError`, `ConnectionError`) |
-| `{{error.code}}` | Module-specific error code |
-| `{{error.module}}` | Name of failed module |
-| `{{error.bundle}}` | Input bundle that caused error |
-| `{{error.scenario}}` | Scenario ID |
-| `{{error.execution}}` | Execution ID |
-
----
-
-## Best Practices
-
-### 1. **Always Add Error Handlers to Critical Modules**
-- Payment processing
-- Database writes
-- External API calls
-- Email/SMS sending
-
-### 2. **Use Descriptive Error Handler Names**
-```
-✅ "Error: Payment Gateway Timeout - Notify Finance"
-❌ "Error Handler 1"
-```
-
-### 3. **Implement Structured Logging**
-```json
-{
-  "timestamp": "{{now}}",
-  "scenario": "{{scenario.name}}",
-  "module": "{{error.module}}",
-  "error": "{{error.message}}",
-  "bundle": "{{error.bundle}}",
-  "executionId": "{{execution.id}}"
-}
-```
-
-### 4. **Test Error Scenarios**
-- Use "Run once" with invalid data
-- Simulate API downtime
-- Test rate limiting
-
-### 5. **Monitor Scenario Health**
-- Enable "Send email on error" in scenario settings
-- Use Make's built-in dashboard
-- Integrate with external monitoring
-
----
-
-## Scenario-Level Error Settings
-
-### **Scenario Settings → Error Handling**
-- **Max consecutive errors**: Auto-disable after N failures
-- **Error notification email**: Recipients for failure alerts
-- **Store incomplete executions**: **ON** (required for auto-retries & queue) — OFF by default
-- **Incomplete executions**: Keep/auto-delete failed runs
-
-### **Scheduling & Errors**
-- Failed scheduled runs don't block next run
-- Use "Run scenario" module for dependency chains
-
----
-
-## Common Pitfalls (From Production)
+## 10. Common Pitfalls
 
 | Pitfall | Symptom | Fix |
-|---------|---------|-----|
-| No handler on "safe" module | Silent halt months later | Map **every** module to a directive |
-| Resume with fallback everywhere | CRM full of placeholder data | Only Resume where fallback is truly safe |
-| High retries on structural errors | Ops quota burned, real issue hidden | Low/no retries on mapping/auth errors |
-| Incomplete executions ON, never checked | 200+ queue, unreconcilable backlog | Schedule queue review < frequency of failures |
-| Alert on every error | Team ignores Slack channel | Alert only on Break/Commit/Rollback/Incomplete |
-| Rollback expected to undo email | Email sent despite DB failure | Put non-transactional steps LAST |
-| First module fails, no queue entry | Lost data, no retry | Add Retry handler to first module |
+|---|---|---|
+| No handler on a "safe" module | Silent halt discovered months later | Give **every** module an explicit directive |
+| Resume-with-fallback everywhere | CRM slowly fills with placeholder data | Only use Resume where the fallback is genuinely safe |
+| High retry counts on structural errors | Ops quota burned, real bug hidden | Zero/low retries on mapping and auth errors |
+| Incomplete Executions ON but never checked | 200+ item backlog, unreconcilable | Review the queue on a schedule shorter than the failure rate |
+| Alerting on every error | Team mutes the Slack channel | Alert only on Commit/Rollback/Incomplete execution |
+| Expecting Rollback to "unsend" an email | Email/Slack message sent despite a later DB failure | Put non-transactional steps **last** in module order |
+| First module fails with no Retry handler | Data lost, nothing in the queue | Attach a Retry handler directly to the first module |
 
 ---
 
-## Common Error Codes Reference
+## 11. Error Code Reference
 
-### **HTTP Modules**
+### HTTP modules
 | Code | Meaning | Action |
-|------|---------|--------|
+|---|---|---|
 | 400 | Bad Request | Check mapping/validation |
 | 401 | Unauthorized | Refresh token/credentials |
 | 403 | Forbidden | Check permissions/scopes |
@@ -314,61 +225,49 @@ When error handler triggers, these variables available:
 | 500 | Server Error | Retry with backoff |
 | 503 | Unavailable | Circuit breaker |
 
-### **Database Modules**
+### Database modules
 | Code | Meaning |
-|------|---------|
+|---|---|
 | ER_DUP_ENTRY | Duplicate key |
 | ER_NO_REFERENCED_ROW | Foreign key violation |
 | ER_DATA_TOO_LONG | Field length exceeded |
 
----
+### Available error variables (inside a handler)
+`{{error.message}}` · `{{error.type}}` · `{{error.code}}` · `{{error.module}}` · `{{error.bundle}}` · `{{error.scenario}}` · `{{error.execution}}`
 
-## Debugging Tips
-
-1. **Use "Run once" with test data**
-2. **Check execution inspector** (bubble icon)
-3. **Enable "Show all bundles"** in module output
-4. **Use Set Variable to capture intermediate state**
-5. **Test error handlers independently**
-
----
-
-## Example: Complete Error Handling Flow
-
-```
-[HTTP: Get User] 
-    │
-    ├── Success → [Process User]
-    │
-    └── Error → [Router: Check error.code]
-                    │
-                    ├── 401 → [Refresh Token] → [Resume: Get User]  (Directive: Resume)
-                    │
-                    ├── 429 → [Sleep 60s] → [Resume: Get User]       (Directive: Resume)
-                    │
-                    ├── 404 → [Create User] → [Resume: Get User]     (Directive: Resume)
-                    │
-                    └── Other → [Slack: Alert Team] 
-                                  → [Data Store: Log Failed Bundle]
-                                  → [Break]                          (Directive: Rollback)
-```
-
-> Use **Router** on error handler to route by `{{error.code}}` or `{{error.type}}` to different directives.
+| Variable              | Description                                           |
+| --------------------- | ----------------------------------------------------- |
+| `{{error.message}}`   | Human-readable error message                          |
+| `{{error.type}}`      | Error category (e.g., `DataError`, `ConnectionError`) |
+| `{{error.code}}`      | Module-specific error code                            |
+| `{{error.module}}`    | Name of failed module                                 |
+| `{{error.bundle}}`    | Input bundle that caused error                        |
+| `{{error.scenario}}`  | Scenario ID                                           |
+| `{{error.execution}}` | Execution ID                                          |
 
 ---
 
-## Resources
+## 12. Best Practices Checklist
 
-- [Make Error Handling Docs](https://www.make.com/en/help/error-handling)
-- [Error Types Reference](https://www.make.com/en/help/error-types)
-- [Rollback Error Handler Docs](https://help.make.com/rollback-error-handler)
-- [Exponential Backoff Docs](https://help.make.com/exponential-backoff)
-- [Incomplete Executions Docs](https://help.make.com/incomplete-executions)
-- [Alltomate Deep Dive](https://alltomate.com/blogs/make-com-error-handling/) — Source for directive behavior & operational patterns
-- [Community Templates](https://www.make.com/en/templates) — Search "error handling"
-- [Make Academy](https://www.make.com/en/academy) — Error Handling Course
+- [ ] Attach an error handler to every **critical** module (payments, DB writes, external API calls, email/SMS).
+- [ ] Name error handlers descriptively (`"Error: Payment Gateway Timeout - Notify Finance"`, not `"Error Handler 1"`).
+- [ ] Log structured error data (timestamp, scenario, module, message, bundle, execution ID) somewhere queryable.
+- [ ] Test with **Run once** + intentionally invalid data; simulate downtime/rate limiting.
+- [ ] Turn on **Store incomplete executions** for any scenario handling important data.
+- [ ] Order modules so non-transactional actions (sending, deleting) happen **last**.
+- [ ] Reserve aggressive Retry configs for genuinely flaky external APIs — not structural bugs.
+- [ ] Review the Incomplete Executions queue on a fixed schedule.
+- [ ] Use the **Throw** tool to deliberately test your error-handling routes (it also lets you enforce custom business-rule validation with a custom message/code).
 
 ---
 
-*Last Updated: {{date}}*
-*Version: 2.0 — Added 5 directives, incomplete executions, alerting strategy from Alltomate*
+## 13. Resources
+
+- [Error handling (index)](https://help.make.com/error-handling)
+- [Introduction to errors and warnings](https://help.make.com/introduction-to-errors-and-warnings)
+- [Overview of error handling](https://help.make.com/overview-of-error-handling)
+- [Error handlers](https://help.make.com/error-handlers)
+- [Exponential backoff](https://help.make.com/exponential-backoff)
+- [Throw](https://help.make.com/throw)
+- [Common errors and warnings and their fixes](https://help.make.com/common-errors-and-warnings-and-their-fixes)
+
