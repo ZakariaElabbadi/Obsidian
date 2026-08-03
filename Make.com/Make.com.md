@@ -5,10 +5,9 @@
 %% End Waypoint %%
 ![[Pasted image 20260507115905.png]]
 
-**What is Make?**
+## What is Make?
 Make is a powerful automation platform that allows you to connect various applications and services to automate workflows and tasks. With Make, you can automate processes just like a developer, all without any coding expertise.
-
-**What can I do using Make?**
+## What can I do using Make?
 The possibilities with Make are nearly endless. You can improve how your business works by automating many different tasks.
 Here are a few examples of common manual tasks you can automate:
 Notify the sales team when a customer fills out a form expressing interest in your products and services.
@@ -20,22 +19,5 @@ Set up complete employee onboarding that automatically creates IT accounts, requ
 Handle customer questions by automatically creating tickets and using AI to sort them based on what they're asking about, their location, and which language they're using.
 Process invoices automatically after orders are fulfilled and products are shipped.
 While you focus on growing your business, Make takes care of repetitive tasks in the background.
-
-**How does it work?**
+##  How does it work?
 To automate tasks or build complex processes, you need to communicate with different applications and systems. For instance, extracting information from a Google or Microsoft spreadsheet requires connecting to their services. These services offer what we call APIs.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
