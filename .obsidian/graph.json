@@ -41,6 +41,13 @@
         "a": 1,
         "rgb": 609855
       }
+    },
+    {
+      "query": "path:Make.com  ",
+      "color": {
+        "a": 1,
+        "rgb": 12455447
+      }
     }
   ],
   "collapse-display": true,
@@ -53,6 +60,6 @@
   "repelStrength": 4.9755859375,
   "linkStrength": 0.90234375,
   "linkDistance": 110,
-  "scale": 0.4444444444444429,
+  "scale": 0.6929721617566339,
   "close": true
 }

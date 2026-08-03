@@ -1,5 +1,8 @@
 ---
-tags: [make.com, automation, error-handling, integromat]
+tags:
+  - automation
+  - error-handling
+  - integromat
 title: Make.com Error Handling Guide
 source: https://help.make.com/error-handling
 ---
@@ -235,16 +238,6 @@ Primary API → [Error] → Fallback API → Cached/static data → Hardcoded de
 ### Available error variables (inside a handler)
 `{{error.message}}` · `{{error.type}}` · `{{error.code}}` · `{{error.module}}` · `{{error.bundle}}` · `{{error.scenario}}` · `{{error.execution}}`
 
-| Variable              | Description                                           |
-| --------------------- | ----------------------------------------------------- |
-| `{{error.message}}`   | Human-readable error message                          |
-| `{{error.type}}`      | Error category (e.g., `DataError`, `ConnectionError`) |
-| `{{error.code}}`      | Module-specific error code                            |
-| `{{error.module}}`    | Name of failed module                                 |
-| `{{error.bundle}}`    | Input bundle that caused error                        |
-| `{{error.scenario}}`  | Scenario ID                                           |
-| `{{error.execution}}` | Execution ID                                          |
-
 ---
 
 ## 12. Best Practices Checklist
@@ -270,4 +263,4 @@ Primary API → [Error] → Fallback API → Cached/static data → Hardcoded de
 - [Exponential backoff](https://help.make.com/exponential-backoff)
 - [Throw](https://help.make.com/throw)
 - [Common errors and warnings and their fixes](https://help.make.com/common-errors-and-warnings-and-their-fixes)
-
+- [Scenario settings](https://help.make.com/evar6qlowv4yyuneyv00)
