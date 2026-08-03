@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Make.com/Make.com Error Handling Guide.md",
+                "file": "Salesforce/04 - Flows/Task.md",
                 "mode": "preview",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Make.com Error Handling Guide"
+              "title": "Task"
             }
           }
         ]
@@ -230,8 +230,10 @@
   },
   "active": "8fa4e912e8a232f0",
   "lastOpenFiles": [
-    "Make.com/Make.com.md",
+    "Salesforce/04 - Flows/Create Records.md",
+    "Salesforce/04 - Flows/Decision.md",
     "Make.com/Make.com Error Handling Guide.md",
+    "Make.com/Make.com.md",
     "Unconfirmed 36713.crdownload",
     "Tableau/Tableau.md",
     "Tableau/Visualizations.md",
@@ -252,7 +254,6 @@
     "copilot/copilot-custom-prompts/Summarize.md",
     "copilot/copilot-custom-prompts/Rewrite as tweet thread.md",
     "Daily/test.md",
-    "Make.com/Make.com Error Handling Guide.md",
     "Make.com",
     "Unconfirmed 453872.crdownload",
     "HubSpot/Marketing Hub.md",
@@ -261,7 +262,6 @@
     "HubSpot/Inbound.md",
     "HubSpot/Help.md",
     "HubSpot/HubSpot.md",
-    "HubSpot/Summary.md",
     "Unconfirmed 312109.crdownload",
     "Unconfirmed 848051.crdownload",
     "Unconfirmed 587465.crdownload",
