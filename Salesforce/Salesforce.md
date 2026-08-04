@@ -51,9 +51,11 @@
 	- [[Sales Cloud]]
 - **03 - Service Cloud**
 - **04 - Flows**
+	- [[Assignment]]
 	- [[Create Records]]
 	- [[Decision]]
 	- [[Get Records]]
+	- [[Loop]]
 	- [[Task]]
 	- [[Update Records]]
 

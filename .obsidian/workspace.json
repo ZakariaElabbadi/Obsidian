@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Salesforce/04 - Flows/Task.md",
+                "file": "Salesforce/04 - Flows/Assignment.md",
                 "mode": "preview",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Task"
+              "title": "Assignment"
             }
           }
         ]
@@ -230,8 +230,13 @@
   },
   "active": "8fa4e912e8a232f0",
   "lastOpenFiles": [
-    "Salesforce/04 - Flows/Create Records.md",
+    "Salesforce/04 - Flows/Loop.md",
+    "Salesforce/04 - Flows/Assignment.md",
     "Salesforce/04 - Flows/Decision.md",
+    "Salesforce/04 - Flows/Create Records.md",
+    "Salesforce/04 - Flows/Get Records.md",
+    "Salesforce/04 - Flows/Update Records.md",
+    "Salesforce/04 - Flows/Task.md",
     "Make.com/Make.com Error Handling Guide.md",
     "Make.com/Make.com.md",
     "Unconfirmed 36713.crdownload",
@@ -257,11 +262,6 @@
     "Make.com",
     "Unconfirmed 453872.crdownload",
     "HubSpot/Marketing Hub.md",
-    "copilot/copilot-conversations/Active_Note_Answers@20260730_121055.md",
-    "HubSpot/Inbound Marketing.md",
-    "HubSpot/Inbound.md",
-    "HubSpot/Help.md",
-    "HubSpot/HubSpot.md",
     "Unconfirmed 312109.crdownload",
     "Unconfirmed 848051.crdownload",
     "Unconfirmed 587465.crdownload",
