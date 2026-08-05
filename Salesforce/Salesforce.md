@@ -58,6 +58,7 @@
 	- [[Loop]]
 	- [[Task]]
 	- [[Update Records]]
+	- [[Variables]]
 
 %% End Waypoint %%
 
