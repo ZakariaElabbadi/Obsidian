@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "email.md",
+                "file": "test.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "email"
+              "title": "test"
             }
           }
         ]
@@ -80,7 +80,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 348.5
+    "width": 348.5,
+    "collapsed": true
   },
   "right": {
     "id": "36f29cddca78a320",
@@ -230,8 +231,9 @@
   },
   "active": "8fa4e912e8a232f0",
   "lastOpenFiles": [
-    "var.md",
     "email.md",
+    "test.md",
+    "var.md",
     "formula.md",
     "Salesforce/04 - Flows/Task.md",
     "Salesforce/04 - Flows/Assignment.md",
@@ -259,7 +261,6 @@
     "copilot/copilot-custom-prompts/Make longer.md",
     "copilot/copilot-custom-prompts/Remove URLs.md",
     "copilot/copilot-custom-prompts/Simplify.md",
-    "copilot/copilot-custom-prompts/Summarize.md",
     "Make.com",
     "Unconfirmed 453872.crdownload",
     "Unconfirmed 312109.crdownload",
