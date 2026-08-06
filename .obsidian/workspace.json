@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "email.md",
+                "file": "Sent email.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "email"
+              "title": "Sent email"
             }
           }
         ]
@@ -228,11 +228,12 @@
       "obsidian-kanban:Create new board": false
     }
   },
-  "active": "5426a033926819c4",
+  "active": "6a7d8a196cd9690f",
   "lastOpenFiles": [
+    "email.md",
+    "Sent email.md",
     "n8n",
     "test.md",
-    "email.md",
     "var.md",
     "formula.md",
     "Salesforce/Salesforce.md",
@@ -268,7 +269,6 @@
     "Unconfirmed 587465.crdownload",
     "Unconfirmed 59978.crdownload",
     "Unconfirmed 809655.crdownload",
-    "Unconfirmed 490155.crdownload",
     "Excalidraw/Scripts/Downloaded/Elbow connectors.svg",
     "Untitled.canvas",
     "98_Attachment/fe572-database_structure.png",
