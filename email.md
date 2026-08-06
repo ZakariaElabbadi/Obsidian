@@ -164,3 +164,21 @@ Attachments
 أفضل الممارسات
 
 وسيكون أقرب إلى دورة مستقلة.
+
+# 📧 Salesforce Flow – Email Automation Roadmap
+
+## أهداف الدرس
+
+- ✅ الفرق بين **Send Email** و **Email Alert**
+- ✅ كيفية إرسال Email من داخل Formula - Quick ReferenceFlow
+- ✅ استخدام **Email Templates**
+- ✅ استخدام **HTML** داخل البريد الإلكتروني
+- ✅ استخدام **Rich Text**
+- ✅ إدراج القيم الديناميكية (**Merge Fields**)
+- ✅ إرسال **PDF كمرفق (Attachment)** ومتى يكون ذلك ممكنًا
+- ✅ أفضل الممارسات لتجنب إرسال رسائل البريد المكررة
+- ✅ مشروع عملي كامل:
+  - عند إغلاق **Opportunity**
+  - إرسال بريد إلكتروني احترافي للعميل
+  - إنشاء **Task**
+  - تحديث السجل (**Update Record**)

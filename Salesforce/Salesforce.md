@@ -54,6 +54,7 @@
 	- [[Assignment]]
 	- [[Create Records]]
 	- [[Decision]]
+	- [[Formula]]
 	- [[Get Records]]
 	- [[Loop]]
 	- [[Task]]
