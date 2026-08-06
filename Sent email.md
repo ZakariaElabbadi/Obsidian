@@ -614,3 +614,56 @@ Attach Contract PDF
 - ContentVersion & ContentDocument
 - Professional Notification System
 - Complete Email Automation Project
+
+
+إذا سألك المحاور:
+
+When would you use Send Email instead of Email Alert?
+
+الإجابة المثالية:
+
+Use Send Email when the email content is dynamic and generated directly in the Flow. Use Email Alert when you want a reusable, centrally managed email based on an Email Template that can be shared across multiple automations.
+
+# Salesforce Flow - Email Alert vs Send Email
+
+## Email Template
+- Stores Subject and Body.
+- Reusable.
+- Does NOT send emails.
+
+## Send Email Action
+- Sends emails directly from Flow.
+- Subject can be dynamic.
+- Body can be dynamic.
+- Recipient can be selected in Flow.
+
+## Email Alert
+- Uses an Email Template.
+- Defines Recipients and Sender.
+- Reusable across multiple Flows.
+
+## Best Practice
+
+Use Send Email:
+- Dynamic emails
+- Quick automations
+- Formula-based Subject
+
+Use Email Alert:
+- Standard company emails
+- Shared templates
+- Easier maintenance
+- Multiple Flows use the same email
+
+          Email Template
+        (Message Only)
+                │
+                │
+                ▼
+          Email Alert
+   (Template + Recipient + Sender)
+                │
+                │
+                ▼
+              Flow
+        (When to Send)
