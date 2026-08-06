@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Salesforce/04 - Flows/Formula.md",
+                "file": "email.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Formula"
+              "title": "email"
             }
           }
         ]
@@ -230,13 +230,18 @@
   },
   "active": "5426a033926819c4",
   "lastOpenFiles": [
+    "test.md",
     "email.md",
+    "var.md",
+    "formula.md",
+    "Salesforce/Salesforce.md",
+    "Make.com/Make.com Functions Reference.md",
+    "Make.com/Make.com Error Handling Guide.md",
+    "Make.com/Make.com.md",
+    "Make.com/Error Handling.md",
     "Salesforce/04 - Flows/Formula.md",
     "Unconfirmed 587547.crdownload",
     "Salesforce/04 - Flows/Variables.md",
-    "test.md",
-    "var.md",
-    "formula.md",
     "Salesforce/04 - Flows/Task.md",
     "Salesforce/04 - Flows/Assignment.md",
     "Salesforce/04 - Flows/Loop.md",
@@ -244,8 +249,6 @@
     "Salesforce/04 - Flows/Create Records.md",
     "Salesforce/04 - Flows/Get Records.md",
     "Salesforce/04 - Flows/Update Records.md",
-    "Make.com/Make.com Error Handling Guide.md",
-    "Make.com/Make.com.md",
     "Unconfirmed 36713.crdownload",
     "Tableau/Tableau.md",
     "Tableau/Visualizations.md",
@@ -255,12 +258,9 @@
     "98_Attachment/Pasted image 20260507115905.png",
     "98_Attachment/2026-04-27_14-27.png",
     "98_Attachment/2026-08-01_15-43-30.png",
-    "Make.com/Error Handling.md",
     "copilot/copilot-custom-prompts/Clip Web Page.md",
     "copilot/copilot-custom-prompts/Emojify.md",
     "copilot/copilot-custom-prompts/Fix grammar and spelling.md",
-    "copilot/copilot-custom-prompts/Generate glossary.md",
-    "copilot/copilot-custom-prompts/Make longer.md",
     "Make.com",
     "Unconfirmed 453872.crdownload",
     "Unconfirmed 312109.crdownload",

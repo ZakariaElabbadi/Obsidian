@@ -1,5 +1,8 @@
 ---
-tags: [make.com, automation, functions, integromat]
+tags:
+  - automation
+  - functions
+  - integromat
 title: Make.com Functions Reference
 source: https://help.make.com/functions
 ---

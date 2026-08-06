@@ -1,6 +1,7 @@
 %% Begin Waypoint %%
 - [[Error Handling]]
 - [[Make.com Error Handling Guide]]
+- [[Make.com Functions Reference]]
 
 %% End Waypoint %%
 ![[Pasted image 20260507115905.png]]
