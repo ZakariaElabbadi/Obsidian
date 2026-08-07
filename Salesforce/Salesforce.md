@@ -49,6 +49,7 @@
 	- [[Product]]
 	- [[Sales Cloud - Full Map]]
 	- [[Sales Cloud]]
+	- [[Sales Process & Sales Team Roles]]
 - **03 - Service Cloud**
 - **04 - Flows**
 	- [[Assignment]]
@@ -57,6 +58,8 @@
 	- [[Formula]]
 	- [[Get Records]]
 	- [[Loop]]
+	- [[send email action ·]]
+	- [[Sent email]]
 	- [[Task]]
 	- [[Update Records]]
 	- [[Variables]]
